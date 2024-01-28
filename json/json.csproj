@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<LangVersion>latest</LangVersion>
+		<TargetFrameworks>net462</TargetFrameworks>
+		<!--
+    <UseWindowsForms>true</UseWindowsForms>
+    -->
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<PlatformTarget>anycpu</PlatformTarget>
+		<Prefer32Bit>false</Prefer32Bit>
+		<Version>0.0.0.0</Version>
+	</PropertyGroup>
+	<PropertyGroup>
+		<DebugType>full</DebugType>
+		<TieredCompilationQuickJit>false</TieredCompilationQuickJit>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net462'">
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Data" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="System.IO.Compression" />
+		<Reference Include="System.Net.Http" />
+		<Reference Include="System.Runtime.Remoting" />
+		<Reference Include="System.Web" />
+		<Reference Include="System.Xml" />
+		<Reference Include="System.Xml.Linq" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="assets\**">
+			<Link>assets\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+			<TargetPath>assets\%(RecursiveDir)\%(Filename)%(Extension)</TargetPath>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="Newtonsoft.Json">
+	    <HintPath>Newtonsoft.Json.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+</Project>
