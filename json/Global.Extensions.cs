@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable CS8632
+#pragma warning disable CS0168
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
