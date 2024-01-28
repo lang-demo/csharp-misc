@@ -1,10 +1,10 @@
-﻿#pragma warning disable CS0618
+﻿#pragma warning disable CS8632
+#pragma warning disable CS0618
 using System;
-using System.Globalization;
 using System.Reflection;
 using System.IO;
 using System.Net;
-using System.Net.Http;
+//using System.Net.Http;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -607,6 +607,7 @@ public partial class Util
         return split[split.Length - 1];
     }
 
+#if false
     public static string GetRidirectUrl(string url)
     {
         Task<string> task = GetRidirectUrlTask(url);
@@ -633,6 +634,7 @@ public partial class Util
         response.Dispose();
         return result;
     }
+#endif
 
     public static byte[]? ToUtf8Bytes(string? s)
     {
