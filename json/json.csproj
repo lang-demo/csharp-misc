@@ -40,8 +40,11 @@
 		</Content>
 	</ItemGroup>
 	<ItemGroup>
+	  <Reference Include="Global">
+	    <HintPath>..\global\Global.dll</HintPath>
+	  </Reference>
 	  <Reference Include="Newtonsoft.Json">
-	    <HintPath>Newtonsoft.Json.dll</HintPath>
+	    <HintPath>../global/Newtonsoft.Json.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 </Project>
