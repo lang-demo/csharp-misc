@@ -5,6 +5,16 @@ using System.IO;
 
 class MainClass
 {
+    public static string AssemblyDirectory
+    {
+        get
+        {
+            string codeBase = typeof(MainClass).Assembly.CodeBase;
+            UriBuilder uri = new UriBuilder(codeBase);
+            string path = Uri.UnescapeDataString(uri.Path);
+            return Path.GetDirectoryName(path);
+        }
+    }
     static void Main()
     {
         Console.WriteLine("Hello, World");
@@ -21,9 +31,8 @@ class MainClass
                 return assembly;
             };
             */
-            Assembly assembly = Assembly.LoadFrom(@"D:\.repo\base14\go\cshrp\loadasm\Class2\Class2.dll");
-            //Assembly assembly2 = Assembly.LoadFrom(@"D:\.repo\base14\go\cshrp\loadasm\Class2\Dep.dll");
-            //Assembly assembly = LoadAddinClasses(@"D:\.repo\base14\go\cshrp\loadasm\Class2\Class2.dll");
+            //Assembly assembly = Assembly.LoadFrom(@"D:\.repo\base14\go\cshrp\loadasm\Class2\Class2.dll");
+            Assembly assembly = Assembly.LoadFrom(AssemblyDirectory + @"\Class2\Class2.dll");
             //Console.WriteLine("(2)");
             foreach (Type ti in assembly.GetTypes().Where(x => x.IsClass))
             {
