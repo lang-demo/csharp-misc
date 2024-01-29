@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<!--<OutputType>Exe</OutputType>-->
+		<LangVersion>latest</LangVersion>
+		<TargetFrameworks>net462</TargetFrameworks>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Prefer32Bit>false</Prefer32Bit>
+		<Version>0.0.0.0</Version>
+	</PropertyGroup>
+	<PropertyGroup>
+		<DebugType>full</DebugType>
+		<TieredCompilationQuickJit>false</TieredCompilationQuickJit>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net462'">
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+	<PropertyGroup>
+		<DllExportIdent>608BD601-0D77-4329-BC7B-EFA1E1E1BECB</DllExportIdent>
+		<DllExportMetaLibName>DllExport.dll</DllExportMetaLibName>
+		<DllExportNamespace>CSharpAPI</DllExportNamespace>
+		<DllExportDDNSCecil>true</DllExportDDNSCecil>
+		<DllExportSkipOnAnyCpu>false</DllExportSkipOnAnyCpu>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<DllExportOrdinalsBase>1</DllExportOrdinalsBase>
+		<DllExportGenExpLib>false</DllExportGenExpLib>
+		<DllExportOurILAsm>false</DllExportOurILAsm>
+		<DllExportSysObjRebase>false</DllExportSysObjRebase>
+		<DllExportLeaveIntermediateFiles>false</DllExportLeaveIntermediateFiles>
+		<DllExportTimeout>30000</DllExportTimeout>
+		<DllExportPeCheck>2</DllExportPeCheck>
+		<DllExportPatches>0</DllExportPatches>
+		<DllExportPreProcType>0</DllExportPreProcType>
+		<DllExportPostProcType>0</DllExportPostProcType>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Data" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="System.IO.Compression" />
+		<Reference Include="System.Net.Http" />
+		<Reference Include="System.Runtime.Remoting" />
+		<Reference Include="System.Web" />
+		<Reference Include="System.Xml" />
+		<Reference Include="System.Xml.Linq" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="assets\**">
+			<Link>assets\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+			<TargetPath>assets\%(RecursiveDir)\%(Filename)%(Extension)</TargetPath>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="Newtonsoft.Json">
+			<HintPath>Newtonsoft.Json.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+</Project>
