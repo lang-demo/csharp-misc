@@ -17,6 +17,8 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Global;
 
@@ -27,6 +29,31 @@ public partial class Util
 {
     static Util()
     {
+    }
+    public static IntPtr StringToUTF16Addr(string s)
+    {
+        return Marshal.StringToHGlobalUni(s);
+    }
+    public static string UTF16AddrToString(IntPtr s)
+    {
+        return Marshal.PtrToStringUni(s);
+    }
+    public static IntPtr StringToUTF8Addr(string s)
+    {
+        int len = Encoding.UTF8.GetByteCount(s);
+        byte[] buffer = new byte[len + 1];
+        Encoding.UTF8.GetBytes(s, 0, s.Length, buffer, 0);
+        IntPtr nativeUtf8 = Marshal.AllocHGlobal(buffer.Length);
+        Marshal.Copy(buffer, 0, nativeUtf8, buffer.Length);
+        return nativeUtf8;
+    }
+    public static string UTF8AddrToString(IntPtr s)
+    {
+        int len = 0;
+        while (Marshal.ReadByte(s, len) != 0) ++len;
+        byte[] buffer = new byte[len];
+        Marshal.Copy(s, buffer, 0, buffer.Length);
+        return Encoding.UTF8.GetString(buffer);
     }
     public static uint SessionId()
     {
