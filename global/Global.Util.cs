@@ -30,6 +30,10 @@ public partial class Util
     static Util()
     {
     }
+    public static void FreeHGlobal(IntPtr x)
+    {
+        Marshal.FreeHGlobal(x);
+    }
     public static IntPtr StringToUTF16Addr(string s)
     {
         return Marshal.StringToHGlobalUni(s);
